@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador de Entrevista Técnica</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center px-4">
+
+  <div id="app" class="w-full max-w-2xl bg-gray-800 p-6 rounded-2xl shadow-lg">
+
+    <!-- TELA INICIAL -->
+    <section id="start-screen" class="text-center space-y-6">
+      <h1 class="text-3xl font-bold">Simulador de Entrevista Técnica</h1>
+      <p class="text-gray-400">Teste seus conhecimentos em programação!</p>
+      <div class="text-left space-y-2">
+        <label for="difficulty" class="block text-sm text-gray-300 font-medium">Escolha a dificuldade:</label>
+        <select id="difficulty" class="w-full bg-gray-700 text-white rounded-lg px-3 py-2">
+          <option value="easy">Fácil (sem tempo)</option>
+          <option value="medium">Médio (90s)</option>
+          <option value="hard">Difícil (30s)</option>
+        </select>
+      </div>
+      
+      <button id="start-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+        Iniciar Entrevista
+      </button>
+    </section>
+
+    <!-- TELA DE QUIZ -->
+    <section id="quiz-screen" class="hidden space-y-6">
+      <div class="flex justify-between text-sm text-gray-400 mb-2">
+        <span id="question-number">Pergunta 1 de X</span>
+        <span id="timer">⏱️ 00:00</span>
+      </div>
+      <!-- Barra de progresso -->
+      <div class="h-2 bg-gray-700 rounded-full mb-4">
+        <div id="progress-bar" class="h-full bg-blue-600 transition-all duration-500 ease-out" style="width:0%"></div>
+      </div>
+
+      <h2 id="question-text" class="text-xl font-semibold"></h2>
+
+      <div id="options" class="space-y-3">
+        <!-- As opções serão inseridas aqui via JS -->
+      </div>
+      <div id="explanation" class="mt-2 text-sm text-gray-300"></div>
+
+      <button id="next-btn" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition hidden">
+        Próxima Pergunta
+      </button>
+    </section>
+
+    <!-- TELA DE RESULTADO -->
+    <section id="result-screen" class="hidden text-center space-y-6">
+      <h2 class="text-2xl font-bold">Resultado Final</h2>
+      <p id="score-text" class="text-lg"></p>
+      <div id="ranking" class="text-left space-y-2 max-h-48 overflow-y-auto"></div>
+      <button id="restart-btn" class="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+        Tentar Novamente
+      </button>
+    </section>
+
+    <!-- Sons -->
+    <audio id="audio-correct" src="https://assets.mixkit.co/sfx/preview/mixkit-positive-interface-click-1112.mp3"></audio>
+    <audio id="audio-wrong" src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+    <audio id="audio-next" src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3"></audio>
+    <audio id="audio-finish" src="https://assets.mixkit.co/sfx/preview/mixkit-unlock-game-notification-253.mp3"></audio>
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
